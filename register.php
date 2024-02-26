@@ -8,6 +8,23 @@
 </head> 
   
 <body> 
+    <?php
+    include("db.php");
+
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $name = $_POST["name"];
+        $email = $_POST["email"];
+        $password = $_POST["password"];
+    
+        // Insert data into the 'users' table
+        $sql = "INSERT INTO users (name, email, password) VALUES ('$name', '$email', '$password')";
+        if ($conn->query($sql) === TRUE) {
+            echo "Data inserted successfully!";
+        } else {
+            echo "Error: " . $sql . "<br>" . $conn->$error;
+        }
+    }
+     ?>
     <div class="main"> 
         <h1>Регистрация:</h1> 
         <form action=""> 
@@ -29,7 +46,7 @@
                    "^(?=.*\d)(?=.*[a-zA-Z])(?=.*[^a-zA-Z0-9])\S{8,}$" required                    
                    title="Трябва да съдържа поне едно число, една буква и да е минимум 8 знака"> 
   
-            <input type="submit" value="sumbit">
+            <input type="submit" value="Въведи" name="submit">
         </form> 
     </div> 
     <script src="script.js"></script> 
