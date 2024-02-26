@@ -21,16 +21,16 @@
         if ($conn->query($sql) === TRUE) {
             echo "Data inserted successfully!";
         } else {
-            echo "Error: " . $sql . "<br>" . $conn->$error;
+            echo "Error: " . $sql . "<br>" . $conn->$e;
         }
     }
      ?>
     <div class="main"> 
         <h1>Регистрация:</h1> 
-        <form action=""> 
+        <form action="" method="post"> 
             <label for="name">Име:</label> 
-            <input type="text" id="name" 
-                   name="first" 
+            <input type="text" id="first" 
+                   name="name" 
                    placeholder="Въведете името си" required> 
   
             <label for="email">Имейл:</label> 
