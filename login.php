@@ -24,6 +24,7 @@
 
         <input id="submit" type="submit" value="Влезте" name="submit">
         <input type="button" value="Върни се" onclick="history.back()">
+        <p>Нямаш регистрация, тогава се регистрирай <a href="register.php">тук</a></p>
         </form>
 </body>
 </html>
