@@ -38,7 +38,7 @@
         <div class="shape"></div>
         <div class="shape"></div>
     </div>
-    <form>
+    <form method="post">
         <h3>Влезте от тук</h3>
 
         <label for="username">Потребителско име</label>
