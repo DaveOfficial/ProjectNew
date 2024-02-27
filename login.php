@@ -10,6 +10,7 @@
 </head>
 <body>
     <?php
+    require("db.php");
         if ( isset( $_POST['submit'] ) ) {
             echo "<h1>ERROR</h1>";
             $username = $_POST['username'];
