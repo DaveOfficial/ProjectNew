@@ -15,10 +15,10 @@
             echo "<h1>ERROR</h1>";
             $username = $_POST['username'];
             $password = $_POST['password'];
-
+            $hashedPassword = hash("sha256",$password);
                 
             $stmt = $connection->prepare("SELECT * FROM users WHERE name = ? AND password = ?"); 
-            $stmt->execute([ $username, hash("sha256",$password) ]); 
+            $stmt->execute([ $username, $hashedPassword ]); 
             $user = $stmt->fetch();
             
             if ( $user ) {
@@ -29,7 +29,7 @@
                 exit;
                 
             } else {
-                
+                echo $hashedPassword;
                 echo "<b style='color:red;'>Невалидни потребителски данни</b><br><br>";
             }
         }
