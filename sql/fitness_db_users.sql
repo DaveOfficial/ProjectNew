@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `fitness_db` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */;
-USE `fitness_db`;
 -- MySQL dump 10.13  Distrib 8.0.34, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: fitness_db
@@ -28,9 +26,11 @@ CREATE TABLE `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
   `email` varchar(45) NOT NULL,
-  `password` varchar(45) NOT NULL,
+  `password` varchar(80) NOT NULL,
+  `admin` tinytext NOT NULL DEFAULT 0,
+  `subscription` enum('PREMIUM','BASIC') NOT NULL DEFAULT 'BASIC',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,7 +39,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'nik','garsia@gmail.com','djdkK93#'),(2,'nik','garsia@gmail.com','djdkK93#'),(3,'nik','garsia@gmail.com','djdkK93#'),(4,'nik','garsia@gmail.com','djdkK93#'),(5,'nik','garsia@gmail.com','djdkK93#'),(6,'nik','garsia@gmail.com','djdkK93#');
+INSERT INTO `users` VALUES (14,'Гедрос','gedros@gmail.com','b50771161ce5fb78a01a48a91efb5c3384000975f9883','0',''),(15,'Admin','admin@gmail.com','0d43f17a845a8fbc02c32a310bfbff2bbbad82db7b591','1',''),(16,'Admin','admin@gmail.com','08dbbc2eab580aee20c37269b4c069343409c22c1dd65','0',''),(17,'Admin','admin@gmail.com','324c9131f2e84fd1c83e974955589d971d58e4a8c7f34b0c9a899aabf9dbc67f','0','');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -52,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-02-26 21:17:53
+-- Dump completed on 2024-02-27 13:36:21
