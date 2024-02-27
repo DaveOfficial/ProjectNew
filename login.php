@@ -23,7 +23,7 @@
         <input type="password" placeholder="Парола" id="password">
 
         <input id="submit" type="submit" value="Влезте" name="submit">
-        <input type="button" value="Върни се" onclick="history.back()">
+        <button id="return"><a href="index.php">Върни се</a></button>
         <p>Нямаш регистрация, тогава се регистрирай <a href="register.php">тук</a></p>
         </form>
 </body>

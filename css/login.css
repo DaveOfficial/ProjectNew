@@ -6,7 +6,11 @@
     box-sizing: border-box;
 }
 body{
-    background-color: #287d0c;
+    background-image: url(../images/hero-bg.jpg);
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 .background{
     width: 430px;
@@ -18,7 +22,7 @@ body{
 }
 
 form{
-    height: 520px;
+    height: 580px;
     width: 400px;
     background-color: rgba(255, 255, 255, 0.771);
     position: absolute;
@@ -65,7 +69,7 @@ input{
     color: #000000;
 }
 
-#submit{
+#submit, #return{
     margin-top: 50px;
     width: 100%;
     background-color: #ffffff;
@@ -75,5 +79,9 @@ input{
     font-weight: 600;
     border-radius: 5px;
     cursor: pointer;
+}
+
+#return a{
+    text-decoration: none;
 }
 

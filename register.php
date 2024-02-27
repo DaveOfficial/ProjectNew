@@ -11,18 +11,16 @@
     <?php
     include("db.php");
 
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $name = $_POST["name"];
-        $email = $_POST["email"];
-        $password = $_POST["password"];
-    
-        // Insert data into the 'users' table
-        $sql = "INSERT INTO users (name, email, password) VALUES ('$name', '$email', '$password')";
-        if ($conn->query($sql) === TRUE) {
-            echo "Data inserted successfully!";
-        } else {
-            echo "Error: " . $sql . "<br>" . $conn->$e;
-        }
+    if ( isset( $_POST['submit'] ) ) {
+		
+		$name = $_POST['name'];
+		$email = $_POST['email'];
+		$password = $_POST['password'];
+		
+		$sql = "INSERT INTO users ( name, email, password) VALUES (?,?,?)";
+		$connection->prepare($sql)->execute([$name, $email, $password]);
+        
+        header("location: login.php");    
     }
      ?>
     <div class="main"> 
@@ -36,7 +34,7 @@
             <label for="email">Имейл:</label> 
             <input type="email" id="email" 
                    name="email" 
-                   placeholder="Enter your email" required> 
+                   placeholder="Въведете имейла си" required> 
   
             <label for="password">Парола:</label> 
             <input type="password" id="password" 
@@ -44,8 +42,7 @@
                    placeholder="Въведете парола"
                    pattern= 
                    "^(?=.*\d)(?=.*[a-zA-Z])(?=.*[^a-zA-Z0-9])\S{8,}$" required                    
-                   title="Трябва да съдържа поне едно число, една буква и да е минимум 8 знака"> 
-  
+                   title="Трябва да съдържа поне едно число, една буква и един специален символ. Паролата да е минимум 8 знака"> 
             <input type="submit" value="Въведи" name="submit">
         </form> 
     </div> 

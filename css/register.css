@@ -5,7 +5,11 @@ body {
     font-family: sans-serif; 
     line-height: 1.5; 
     min-height: 100vh; 
-    background: #287d0c; 
+    background-image: url(../images/hero-bg.jpg);
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;    
     flex-direction: column; 
     margin: 0; 
 } 
