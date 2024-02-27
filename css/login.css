@@ -12,6 +12,8 @@ body{
     background-size: cover;
     background-repeat: no-repeat;
 }
+
+
 .background{
     width: 430px;
     height: 520px;
@@ -29,7 +31,6 @@ form{
     transform: translate(-50%,-50%);
     top: 50%;
     left: 50%;
-    border-radius: 10px;
     backdrop-filter: blur(10px);
     border: 2px solid rgba(255,255,255,0.1);
     box-shadow: 0 0 40px rgba(8,7,16,0.6);
@@ -69,7 +70,7 @@ input{
     color: #000000;
 }
 
-#submit, #return{
+#submit{
     margin-top: 50px;
     width: 100%;
     background-color: #ffffff;
@@ -81,7 +82,28 @@ input{
     cursor: pointer;
 }
 
-#return a{
+#return{
     text-decoration: none;
+    padding: 15px; 
+    border-radius: 10px; 
+    margin-top: 15px; 
+    margin-bottom: 15px; 
+    border: none; 
+    color: white; 
+    cursor: pointer; 
+    background-color: #4CAF50; 
+    width: 100%; 
+    font-size: 16px; 
 }
 
+#return a{
+    color:white;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+
+h3{
+    color:#4CAF50;
+    font-weight: 600;
+}

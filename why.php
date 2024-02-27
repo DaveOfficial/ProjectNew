@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="bg">
 
 <head>
   <meta charset="utf-8" />
@@ -166,7 +166,7 @@
   <footer class="container-fluid footer_section">
     <p>
       &copy; 2024 Всички права са запазени
-      <a href="https://html.design/">ОТ ВЕЛИКОТО ТРИО</a>
+      <a href="#">ОТ ВЕЛИКОТО ТРИО</a>
     </p>
   </footer>
 

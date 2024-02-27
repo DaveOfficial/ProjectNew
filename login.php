@@ -9,6 +9,30 @@
     <link rel="stylesheet" href="css/login.css">
 </head>
 <body>
+    <?php
+        if ( isset( $_POST['submit'] ) ) {
+            echo "<h1>ERROR</h1>";
+            $username = $_POST['username'];
+            $password = $_POST['password'];
+
+                
+            $stmt = $connection->prepare("SELECT * FROM users WHERE name = ? AND password = ?"); 
+            $stmt->execute([ $username, hash("sha256",$password) ]); 
+            $user = $stmt->fetch();
+            
+            if ( $user ) {
+                    
+                $_SESSION['user'] = $user;
+                        
+                header("location: dashboard.php");
+                exit;
+                
+            } else {
+                
+                echo "<b style='color:red;'>Невалидни потребителски данни</b><br><br>";
+            }
+        }
+    ?>
     <div class="background">
         <div class="shape"></div>
         <div class="shape"></div>
@@ -17,10 +41,10 @@
         <h3>Влезте от тук</h3>
 
         <label for="username">Потребителско име</label>
-        <input type="text" placeholder="Име" id="username">
+        <input type="text" name="username" placeholder="Име" id="username">
 
         <label for="password">Парола</label>
-        <input type="password" placeholder="Парола" id="password">
+        <input type="password" placeholder="Парола" name="password" id="password">
 
         <input id="submit" type="submit" value="Влезте" name="submit">
         <button id="return"><a href="index.php">Върни се</a></button>
