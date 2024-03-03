@@ -11,8 +11,8 @@
 <body>
     <?php
     require("db.php");
+        echo session_status();
         if ( isset( $_POST['submit'] ) ) {
-            echo "<h1>ERROR</h1>";
             $username = $_POST['username'];
             $password = $_POST['password'];
             $hashedPassword = hash("sha256",$password);
@@ -22,7 +22,7 @@
             $user = $stmt->fetch();
             
             if ( $user ) {
-                    
+                session_start();
                 $_SESSION['user'] = $user;
                         
                 header("location: dashboard.php");

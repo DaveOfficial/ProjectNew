@@ -42,9 +42,21 @@
                 <li class="nav-item">
                   <a class="nav-link" href="#">Връзка с нас</a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="login.php"> Влезте</a>
-                </li>
+                <?php
+                  session_start();
+                  if (isset($_SESSION['user'])){
+                    echo '<li class="nav-item">
+                            <a class="nav-link" href="dashboard.php">Профил</a>
+                          </li>';
+                    echo '<li class="nav-item">
+                            <a class="nav-link" href="logout.php">ИЗХОД</a>
+                          </li>';
+                  }else{
+                    echo '<li class="nav-item">
+                            <a class="nav-link" href="login.php"> Влезте</a>
+                          </li>';
+                  }
+                ?>
               </ul>
               <div class="user_option">
                 <form class="form-inline my-2 my-lg-0 ml-0 ml-lg-4 mb-3 mb-lg-0">
@@ -75,16 +87,16 @@
             </div>
             <form action="">
               <div>
-                <input type="text" placeholder="Name" />
+                <input type="text" placeholder="Име" />
               </div>
               <div>
-                <input type="email" placeholder="Email" />
+                <input type="email" placeholder="Имейл" />
               </div>
               <div>
-                <input type="text" placeholder="Phone Number" />
+                <input type="text" placeholder="Телефонен номер" />
               </div>
               <div>
-                <input type="text" class="message-box" placeholder="Message" />
+                <input type="text" class="message-box" placeholder="Съобщение" />
               </div>
               <div class="d-flex ">
                 <button>

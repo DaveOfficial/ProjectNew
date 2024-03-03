@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html lang="bg">
+<?php
+require('auth_session.php');
+?>
 
 <head>
   <meta charset="utf-8" />
@@ -44,9 +47,20 @@
                 <li class="nav-item">
                   <a class="nav-link" href="contact.php">Връзка с нас</a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="login.php"> Влезте</a>
-                </li>
+                <?php
+                if (isset($_SESSION['user'])) {
+                  echo '<li class="nav-item">
+                            <a class="nav-link" href="#">Профил</a>
+                          </li>';
+                  echo '<li class="nav-item">
+                            <a class="nav-link" href="logout.php">ИЗХОД</a>
+                          </li>';
+                } else {
+                  echo '<li class="nav-item">
+                            <a class="nav-link" href="login.php"> Влезте</a>
+                          </li>';
+                }
+                ?>
               </ul>
               <div class="user_option">
                 <form class="form-inline my-2 my-lg-0 ml-0 ml-lg-4 mb-3 mb-lg-0">
@@ -59,65 +73,55 @@
       </div>
     </header>
   </div>
-
   <section class="us_section layout_padding">
-    <div class="container">
-      <div class="heading_container">
-        <h2>
-          Какво предлагаме:
-        </h2>
-      </div>
+    <?php
+    if ($_SESSION['user']['admin'] == 1) {
+      include('db.php');
+      echo '<h2 id="title">АДМИН ПАНЕЛ</h2>';
 
-      <div class="us_container ">
-        <div class="row">
-          <div class="col-lg-4 col-md-4">
-            <div class="box">
-              <div class="img-box">
-                <img src="images/u-1.png" alt="">
-              </div>
-              <div class="detail-box">
-                <h5>
-                  КАЧЕСТВЕНО ОБОРУДВАНЕ
-                </h5>
-                <p>
-                  Най-доброто за най-добрите. От най-здравата стомана за най-здравите хора.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-4">
-            <div class="box">
-              <div class="img-box">
-                <img src="images/u-4.png" alt="">
-              </div>
-              <div class="detail-box">
-                <h5>
-                  ХРАНИТЕЛНИ ДИЕТИ
-                </h5>
-                <p>
-                  САМО С ПРЕМИУМ. Може да вземете от нашите специални хранителни режими, създадени за вашите цели и нужди.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-4">
-            <div class="box">
-              <div class="img-box">
-                <img src="images/u-3.png" alt="">
-              </div>
-              <div class="detail-box">
-                <h5>
-                  СПА ПРОЦЕДУРИ
-                </h5>
-                <p>
-                  ОТНОВО САМО С ПРЕМИУМ. Имаме кални бани, разни масажи и още повече сауни.
-                </p>
-              </div>
-            </div>
-          </div>
+      echo '<table id="tadmin">
+              <tr>
+                <th>NAME</th>
+                <th>EMAIL</th>
+                <th>SUBSCRIPTION</th>
+                <th>IS ADMIN</th>
+                </tr>';
+      $query = "SELECT * FROM `users`;";
+
+      try {
+        $stmt = $connection->prepare($query);
+        $stmt->execute();
+
+        $r = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $result = $stmt->fetchAll();
+
+        foreach ($result as $row) {
+          echo "<tr>" . "<td>" . $row["name"] . "</td>" . "<td>" .
+            $row["email"] . "</td>" . "<td>" . $row["subscription"] . "</td>" . "<td>" . $row["admin"] . "</td>" . "</tr>";
+        }
+      } catch (PDOException $e) {
+        echo "Error: " . $e->getMessage();
+      }
+      echo "</table>";
+    } else {
+    ?>
+      <div id="card-subs" class="card" style="width: 30rem;">
+        <img class="card-img-top" src="https://images.pexels.com/photos/841130/pexels-photo-841130.jpeg?cs=srgb&dl=pexels-victor-freitas-841130.jpg&fm=jpg" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title" style="color:black;">_Членска карта_</h5>
+          <h6 class="card-subtitle mb-2 text-muted">Здравейте <?php echo $_SESSION['user']['name'] ?>!</h6>
+          <p class="card-text">Вие притежавате <?php echo $_SESSION['user']['subscription'] ?> абонамент.</p>
+          <?php
+          if ($_SESSION['user']['subscription'] == "BASIC"){
+            echo '<p>С нашият Basic Membership имате достъп до фитнеса от 14:00 до 19:00 часа. Не е включен достъп до съблекалня.</p>';
+          }elseif($_SESSION['user']['subscription']== "PREMIUM"){
+            echo '<p>С нашият премиум пакет имате достъп до нашият спа център, съблекалнята. Също така нямате ограничение, кога можете да тренирате. С премиум получавате допълнително ѝ специална хранителна диета и тренировка, пригодена само за Вас.</p>';
+          }
+          ?>
         </div>
       </div>
-    </div>
+
+    <?php }?>
   </section>
 
   <section class="info_section layout_padding2">

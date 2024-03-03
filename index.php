@@ -43,9 +43,21 @@
                 <li class="nav-item">
                   <a class="nav-link" href="contact.php">Връзка с нас</a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="login.php"> Влезте</a>
-                </li>
+                <?php
+                  session_start();
+                  if (isset($_SESSION['user'])){
+                    echo '<li class="nav-item">
+                            <a class="nav-link" href="dashboard.php">Профил</a>
+                          </li>';
+                    echo '<li class="nav-item">
+                            <a class="nav-link" href="logout.php">ИЗХОД</a>
+                          </li>';
+                  }else{
+                    echo '<li class="nav-item">
+                            <a class="nav-link" href="login.php"> Влезте</a>
+                          </li>';
+                  }
+                ?>
               </ul>
               <div class="user_option">
                 <form class="form-inline my-2 my-lg-0 ml-0 ml-lg-4 mb-3 mb-lg-0">

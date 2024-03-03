@@ -15,10 +15,11 @@
 		
 		$name = $_POST['name'];
 		$email = $_POST['email'];
+        $subscription = $_POST['sub'];
 		$password = $_POST['password'];
 		$hashedPassword = hash("sha256", $password);
-		$sql = "INSERT INTO users ( name, email, password) VALUES (?,?,?)";
-		$connection->prepare($sql)->execute([$name, $email, $hashedPassword]);
+		$sql = "INSERT INTO users ( name, email, password,subscription) VALUES (?,?,?,?)";
+		$connection->prepare($sql)->execute([$name, $email, $hashedPassword, $subscription]);
         
         header("location: login.php");    
     }
@@ -43,6 +44,13 @@
                    pattern= 
                    "^(?=.*\d)(?=.*[a-zA-Z])(?=.*[^a-zA-Z0-9])\S{8,}$" required                    
                    title="Трябва да съдържа поне едно число, една буква и един специален символ. Паролата да е минимум 8 знака"> 
+            
+            <label for="cars">Изберете абонамент:</label>
+            <select name="sub">
+                <option value="BASIC">BASIC</option>
+                <option value="PREMIUM">PREMIUM</option>
+            </select>
+
             <input type="submit" value="Въведи" name="submit">
             <button id="return"><a href="index.php">Върни се</a></button>
         </form> 

@@ -595,3 +595,29 @@ a:focus {
 #navbarSupportedContent ul li a{
   color: #000000;
 }
+
+#tadmin{
+  caption-side: top;
+  background-color: #fff;
+  color:black;
+  width: 50rem;
+  margin:0 auto;
+  text-align: center;
+}
+
+#tadmin tr td{
+  padding: 1rem;
+}
+
+#tadmin tr:first-of-type{
+  border-bottom: 3px solid #000000;
+}
+
+#title{
+  margin-top: -4rem;
+}
+
+#card-subs{
+  margin: 0px auto;
+  color:#000000;
+}
