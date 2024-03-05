@@ -82,7 +82,7 @@
           <div class="box">
             <div class="name">
               <h5>
-                Самуил Джорданов
+                Виктор Стоянов - Силови Тренировки 
               </h5>
             </div>
             <div class="img-box">
