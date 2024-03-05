@@ -105,7 +105,7 @@
           <div class="box">
             <div class="name">
               <h5>
-                Жана Додева
+                Мони Зенгинер - Бели Денс
               </h5>
             </div>
             <div class="img-box">
