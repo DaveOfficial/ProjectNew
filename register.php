@@ -47,8 +47,8 @@
             
             <label for="cars">Изберете абонамент:</label>
             <select name="sub">
-                <option value="BASIC">BASIC</option>
-                <option value="PREMIUM">PREMIUM</option>
+                <option value="BASIC">BASIC 30лв.</option>
+                <option value="PREMIUM">PREMIUM 60лв.</option>
             </select>
 
             <input type="submit" value="Въведи" name="submit">
